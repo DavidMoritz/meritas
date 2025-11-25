@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+website/node_modules/
+expo/node_modules/
+
+# Build outputs
+dist/
+build/
+*.log
+
+# IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# gh-pages cache
+website/node_modules/.cache/
