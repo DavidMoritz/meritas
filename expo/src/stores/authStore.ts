@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface User {
   id: string;
@@ -17,60 +16,41 @@ interface AuthState {
 }
 
 // Mock authentication - replace with real API calls
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
-      user: null,
-      isAuthenticated: false,
+export const useAuthStore = create<AuthState>()((set) => ({
+  user: null,
+  isAuthenticated: false,
 
-      login: async (email: string, password: string) => {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+  login: async (email: string, password: string) => {
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        // Mock successful login
-        const user: User = {
-          id: '1',
-          name: 'John Patriot',
-          email,
-          phone: '(555) 123-4567',
-        };
+    // Mock successful login
+    const user: User = {
+      id: '1',
+      name: 'John Patriot',
+      email,
+      phone: '(555) 123-4567',
+    };
 
-        set({ user, isAuthenticated: true });
-      },
+    set({ user, isAuthenticated: true });
+  },
 
-      register: async (name: string, email: string, password: string, phone: string) => {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+  register: async (name: string, email: string, password: string, phone: string) => {
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        // Mock successful registration
-        const user: User = {
-          id: '1',
-          name,
-          email,
-          phone,
-        };
+    // Mock successful registration
+    const user: User = {
+      id: '1',
+      name,
+      email,
+      phone,
+    };
 
-        set({ user, isAuthenticated: true });
-      },
+    set({ user, isAuthenticated: true });
+  },
 
-      logout: () => {
-        set({ user: null, isAuthenticated: false });
-      },
-    }),
-    {
-      name: 'auth-storage',
-      storage: createJSONStorage(() => ({
-        getItem: async (key) => {
-          // This would use AsyncStorage in a real app
-          return null;
-        },
-        setItem: async (key, value) => {
-          // Save to AsyncStorage
-        },
-        removeItem: async (key) => {
-          // Remove from AsyncStorage
-        },
-      })),
-    }
-  )
-);
+  logout: () => {
+    set({ user: null, isAuthenticated: false });
+  },
+}));
