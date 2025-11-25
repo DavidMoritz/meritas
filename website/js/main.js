@@ -2,7 +2,7 @@
 // Configuration
 // ========================================
 const CONFIG = {
-    adminEmail: 'davidmoritz@gmail.com',
+    adminEmail: 'info@meritasdigital.com',
     // To enable email functionality, sign up for a free account at:
     // https://formspree.io or https://web3forms.com
     // Then replace the formEndpoint below with your endpoint URL
