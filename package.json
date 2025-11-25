@@ -1,0 +1,21 @@
+{
+  "name": "meritas-digital-website",
+  "version": "1.0.0",
+  "description": "Meritas Digital company website",
+  "scripts": {
+    "deploy": "gh-pages -d .",
+    "serve": "python3 -m http.server 8000",
+    "serve-alt": "npx serve ."
+  },
+  "keywords": [
+    "meritas",
+    "digital",
+    "software",
+    "development"
+  ],
+  "author": "Meritas Digital, LLC",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
+  }
+}
