@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 36,
-    fontWeight: '700',
+    fontWeight: 700,
     color: theme.colors.white,
     marginBottom: theme.spacing[2],
   },
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     color: theme.colors.text.secondary,
   },
   signupTextBold: {
-    fontWeight: '600',
+    fontWeight: 600,
     color: theme.colors.primary[700],
   },
 });

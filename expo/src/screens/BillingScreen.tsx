@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   amount: {
     fontSize: 36,
-    fontWeight: '700',
+    fontWeight: 700,
     color: theme.colors.text.primary,
     marginBottom: theme.spacing[2],
   },
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
   },
   historyAmount: {
     ...theme.typography.styles.body,
-    fontWeight: '600',
+    fontWeight: 600,
   },
 });

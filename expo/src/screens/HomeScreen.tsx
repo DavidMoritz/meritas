@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
   billStatus: {
     ...theme.typography.styles.caption,
     color: theme.colors.accent[700],
-    fontWeight: '600',
+    fontWeight: 600,
   },
   billAmount: {
     fontSize: 48,
-    fontWeight: '700',
+    fontWeight: 700,
     color: theme.colors.text.primary,
     marginBottom: theme.spacing[4],
   },
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   usagePercent: {
     ...theme.typography.styles.body,
     color: theme.colors.text.primary,
-    fontWeight: '600',
+    fontWeight: 600,
   },
   viewDetails: {
     ...theme.typography.styles.label,
@@ -262,6 +262,6 @@ const styles = StyleSheet.create({
   infoValue: {
     ...theme.typography.styles.body,
     color: theme.colors.text.primary,
-    fontWeight: '600',
+    fontWeight: 600,
   },
 });

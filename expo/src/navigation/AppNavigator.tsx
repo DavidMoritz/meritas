@@ -49,7 +49,7 @@ const MainTabs = () => {
         },
         headerTintColor: theme.colors.white,
         headerTitleStyle: {
-          fontWeight: '600',
+          fontWeight: 600,
         },
       }}
     >

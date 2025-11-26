@@ -11,11 +11,11 @@ export const typography = {
 
   // Font weights
   weights: {
-    regular: '400' as const,
-    medium: '500' as const,
-    semibold: '600' as const,
-    bold: '700' as const,
-  },
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+  } as const,
 
   // Font sizes
   sizes: {
@@ -42,67 +42,55 @@ export const typography = {
     // Headings
     h1: {
       fontSize: 36,
-      fontWeight: '700' as const,
-      lineHeight: 1.2,
+      fontWeight: 700,
     },
     h2: {
       fontSize: 30,
-      fontWeight: '700' as const,
-      lineHeight: 1.2,
+      fontWeight: 700,
     },
     h3: {
       fontSize: 24,
-      fontWeight: '600' as const,
-      lineHeight: 1.3,
+      fontWeight: 600,
     },
     h4: {
       fontSize: 20,
-      fontWeight: '600' as const,
-      lineHeight: 1.4,
+      fontWeight: 600,
     },
     h5: {
       fontSize: 18,
-      fontWeight: '600' as const,
-      lineHeight: 1.4,
+      fontWeight: 600,
     },
     h6: {
       fontSize: 16,
-      fontWeight: '600' as const,
-      lineHeight: 1.5,
+      fontWeight: 600,
     },
 
     // Body text
     bodyLarge: {
       fontSize: 18,
-      fontWeight: '400' as const,
-      lineHeight: 1.75,
+      fontWeight: 400,
     },
     body: {
       fontSize: 16,
-      fontWeight: '400' as const,
-      lineHeight: 1.5,
+      fontWeight: 400,
     },
     bodySmall: {
       fontSize: 14,
-      fontWeight: '400' as const,
-      lineHeight: 1.5,
+      fontWeight: 400,
     },
 
     // Special purpose
     caption: {
       fontSize: 12,
-      fontWeight: '400' as const,
-      lineHeight: 1.5,
+      fontWeight: 400,
     },
     button: {
       fontSize: 16,
-      fontWeight: '600' as const,
-      lineHeight: 1.5,
+      fontWeight: 600,
     },
     label: {
       fontSize: 14,
-      fontWeight: '500' as const,
-      lineHeight: 1.5,
+      fontWeight: 500,
     },
   },
 };

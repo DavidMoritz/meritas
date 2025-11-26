@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   usage: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: 700,
     marginBottom: theme.spacing[3],
   },
   progressBar: {
@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
   },
   detail: {
     ...theme.typography.styles.bodyLarge,
-    fontWeight: '600',
+    fontWeight: 600,
   },
 });

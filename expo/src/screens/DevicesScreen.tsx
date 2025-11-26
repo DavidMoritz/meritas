@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
   devicePrice: {
     ...theme.typography.styles.body,
     color: theme.colors.primary[700],
-    fontWeight: '600',
+    fontWeight: 600,
   },
 });
