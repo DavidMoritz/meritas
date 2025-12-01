@@ -40,16 +40,16 @@ const MainTabs = () => {
         tabBarActiveTintColor: theme.colors.primary[700],
         tabBarInactiveTintColor: theme.colors.gray[500],
         tabBarStyle: {
-          paddingBottom: 8,
+          paddingBottom: 20,
           paddingTop: 8,
-          height: 60,
+          height: 72,
         },
         headerStyle: {
           backgroundColor: theme.colors.primary[700],
         },
         headerTintColor: theme.colors.white,
         headerTitleStyle: {
-          fontWeight: 600,
+          fontWeight: '600',
         },
       }}
     >

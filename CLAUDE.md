@@ -242,6 +242,14 @@ Change these to update colors site-wide.
 - Use `StyleSheet.create()` for component styles (better performance than inline styles)
 - Consider implementing a consistent theming system as the app scales
 - Use Expo's built-in support for responsive design
+- **CRITICAL**: `fontWeight` must be a **number** (e.g., `400`, `600`, `700`), NOT a string (e.g., `'400'`, `'600'`, `'700'`)
+  - React Native's new architecture (Fabric) strictly enforces type safety
+  - String fontWeights will cause type errors and invisible text on iOS
+  - Example: Use `fontWeight: 600` not `fontWeight: '600'`
+- **CRITICAL**: Do NOT use `lineHeight` in typography styles when using React Native's new architecture
+  - The `lineHeight` property can cause text rendering issues on iOS with Fabric enabled
+  - Text may become invisible if `lineHeight` is specified in typography style objects
+  - If line height control is needed, use it sparingly and test thoroughly on iOS
 
 #### State Management
 - Start with React's built-in state management (useState, useContext)
@@ -322,6 +330,12 @@ To use a custom domain (e.g., meritasdigital.com):
 
 **Issue**: Metro bundler errors
 - **Solution**: Try clearing cache with `npx expo start -c`
+
+**Issue**: Text not visible on iOS (appears as blank/invisible)
+- **Solution**: Check that all `fontWeight` values are **numbers** (e.g., `600`) not strings (e.g., `'600'`)
+- **Solution**: Remove `lineHeight` from typography style objects - it causes rendering issues with React Native's new architecture (Fabric)
+- **Solution**: Search codebase for `fontWeight.*['"]` to find any string fontWeights and convert to numbers
+- **Root Cause**: React Native's new architecture (Fabric) enforces strict type checking on style properties
 
 ### Website
 
