@@ -14,7 +14,7 @@ import { Card } from '../components/Card';
 export const HomeScreen = ({ navigation }) => {
   // Mock user data (skip auth for now)
   const user = {
-    name: 'John Patriot',
+    name: 'John Q. Patriot',
     phone: '(555) 123-4567',
   };
 
