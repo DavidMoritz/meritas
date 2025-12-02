@@ -24,13 +24,7 @@ const MainTabs = () => {
           paddingTop: 8,
           height: 72,
         },
-        headerStyle: {
-          backgroundColor: theme.colors.primary[700],
-        },
-        headerTintColor: theme.colors.white,
-        headerTitleStyle: {
-          fontWeight: 600,
-        },
+        headerShown: false,
       }}
     >
       <Tab.Screen
@@ -41,7 +35,6 @@ const MainTabs = () => {
           tabBarIcon: ({ color }) => (
             <Text style={{ fontSize: 24 }}>🏠</Text>
           ),
-          headerShown: false,
         }}
       />
       <Tab.Screen

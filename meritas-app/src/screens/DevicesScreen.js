@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
 import { theme } from '../theme';
 import { Card } from '../components/Card';
 
@@ -11,9 +11,18 @@ export const DevicesScreen = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Shop Devices</Text>
+    <View style={styles.container}>
+      {/* Header with Background Image - Fixed at top */}
+      <ImageBackground
+        source={require('../../assets/header-bg.png')}
+        style={styles.header}
+        resizeMode="cover"
+      >
+        <Text style={styles.headerTitle}>Shop Devices</Text>
+      </ImageBackground>
+
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.content}>
 
         {devices.map((device, index) => (
           <TouchableOpacity key={index}>
@@ -26,8 +35,9 @@ export const DevicesScreen = () => {
             </Card>
           </TouchableOpacity>
         ))}
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -36,12 +46,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background.secondary,
   },
+  header: {
+    padding: theme.spacing[6],
+    paddingTop: theme.spacing[16],
+    paddingBottom: theme.spacing[4],
+  },
+  headerTitle: {
+    ...theme.typography.styles.h2,
+    color: theme.colors.white,
+  },
+  scrollView: {
+    flex: 1,
+  },
   content: {
     padding: theme.spacing[4],
-  },
-  title: {
-    ...theme.typography.styles.h3,
-    marginBottom: theme.spacing[4],
   },
   deviceCard: {
     flexDirection: 'row',

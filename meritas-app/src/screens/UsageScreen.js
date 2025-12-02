@@ -1,13 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { theme } from '../theme';
 import { Card } from '../components/Card';
 
 export const UsageScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Usage Monitoring</Text>
+    <View style={styles.container}>
+      {/* Header with Background Image - Fixed at top */}
+      <ImageBackground
+        source={require('../../assets/header-bg.png')}
+        style={styles.header}
+        resizeMode="cover"
+      >
+        <Text style={styles.headerTitle}>Usage Monitoring</Text>
+      </ImageBackground>
+
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.content}>
 
         <Card style={styles.card}>
           <Text style={styles.cardTitle}>Data Usage</Text>
@@ -27,8 +36,9 @@ export const UsageScreen = () => {
           <Text style={styles.cardTitle}>Messages</Text>
           <Text style={styles.detail}>Unlimited</Text>
         </Card>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -37,12 +47,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background.secondary,
   },
+  header: {
+    padding: theme.spacing[6],
+    paddingTop: theme.spacing[16],
+    paddingBottom: theme.spacing[4],
+  },
+  headerTitle: {
+    ...theme.typography.styles.h2,
+    color: theme.colors.white,
+  },
+  scrollView: {
+    flex: 1,
+  },
   content: {
     padding: theme.spacing[4],
-  },
-  title: {
-    ...theme.typography.styles.h3,
-    marginBottom: theme.spacing[4],
   },
   card: {
     marginBottom: theme.spacing[4],

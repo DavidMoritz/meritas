@@ -25,6 +25,7 @@ export const colors = {
     400: '#FF6666',  // Light red
     300: '#FF9999',  // Pale red
     200: '#FFCCCC',  // Very pale red
+    100: '#FFE5E5',  // Super pale red
   },
 
   // Neutrals

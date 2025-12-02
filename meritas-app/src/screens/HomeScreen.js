@@ -40,7 +40,7 @@ export const HomeScreen = ({ navigation }) => {
             style={styles.actionCard}
             onPress={() => navigation.navigate('Billing')}
           >
-            <View style={[styles.actionIcon, { backgroundColor: theme.colors.primary[100] }]}>
+            <View style={[styles.actionIcon, { backgroundColor: theme.colors.info.light }]}>
               <Text style={styles.actionEmoji}>💳</Text>
             </View>
             <Text style={styles.actionTitle}>Pay Bill</Text>
@@ -50,7 +50,7 @@ export const HomeScreen = ({ navigation }) => {
             style={styles.actionCard}
             onPress={() => navigation.navigate('Usage')}
           >
-            <View style={[styles.actionIcon, { backgroundColor: theme.colors.accent[200] }]}>
+            <View style={[styles.actionIcon, { backgroundColor: theme.colors.accent[100] }]}>
               <Text style={styles.actionEmoji}>📊</Text>
             </View>
             <Text style={styles.actionTitle}>Usage</Text>
@@ -61,7 +61,7 @@ export const HomeScreen = ({ navigation }) => {
             style={styles.actionCard}
             onPress={() => navigation.navigate('Devices')}
           >
-            <View style={[styles.actionIcon, { backgroundColor: theme.colors.success.light }]}>
+            <View style={[styles.actionIcon, { backgroundColor: theme.colors.accent[100] }]}>
               <Text style={styles.actionEmoji}>📱</Text>
             </View>
             <Text style={styles.actionTitle}>Devices</Text>

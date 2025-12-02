@@ -1,13 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { theme } from '../theme';
 import { Card } from '../components/Card';
 
 export const BillingScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Billing & Payments</Text>
+    <View style={styles.container}>
+      {/* Header with Background Image - Fixed at top */}
+      <ImageBackground
+        source={require('../../assets/header-bg.png')}
+        style={styles.header}
+        resizeMode="cover"
+      >
+        <Text style={styles.headerTitle}>Billing & Payments</Text>
+      </ImageBackground>
+
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.content}>
 
         <Card style={styles.card}>
           <Text style={styles.cardTitle}>Current Balance</Text>
@@ -24,8 +33,9 @@ export const BillingScreen = () => {
             </View>
           ))}
         </Card>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -34,12 +44,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background.secondary,
   },
+  header: {
+    padding: theme.spacing[6],
+    paddingTop: theme.spacing[16],
+    paddingBottom: theme.spacing[4],
+  },
+  headerTitle: {
+    ...theme.typography.styles.h2,
+    color: theme.colors.white,
+  },
+  scrollView: {
+    flex: 1,
+  },
   content: {
     padding: theme.spacing[4],
-  },
-  title: {
-    ...theme.typography.styles.h3,
-    marginBottom: theme.spacing[4],
   },
   card: {
     marginBottom: theme.spacing[4],

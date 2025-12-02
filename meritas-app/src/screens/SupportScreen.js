@@ -1,13 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { theme } from '../theme';
 import { Card } from '../components/Card';
 
 export const SupportScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Support & Help</Text>
+    <View style={styles.container}>
+      {/* Header with Background Image - Fixed at top */}
+      <ImageBackground
+        source={require('../../assets/header-bg.png')}
+        style={styles.header}
+        resizeMode="cover"
+      >
+        <Text style={styles.headerTitle}>Support & Help</Text>
+      </ImageBackground>
+
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.content}>
         <Image source={require('../../assets/icon.png')} style={styles.logo} />
         <Card style={styles.card}>
           <Text style={styles.cardTitle}>How can we help?</Text>
@@ -28,8 +37,9 @@ export const SupportScreen = () => {
           <Text style={styles.faq}>How do I add a line?</Text>
           <Text style={styles.faq}>How do I upgrade my device?</Text>
         </Card>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -38,17 +48,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background.secondary,
   },
+  header: {
+    padding: theme.spacing[6],
+    paddingTop: theme.spacing[16],
+    paddingBottom: theme.spacing[4],
+  },
+  headerTitle: {
+    ...theme.typography.styles.h2,
+    color: theme.colors.white,
+  },
+  scrollView: {
+    flex: 1,
+  },
   content: {
     padding: theme.spacing[4],
-  },
-  title: {
-    ...theme.typography.styles.h3,
-    marginBottom: theme.spacing[4],
   },
   logo: {
     width: 100,
     height: 100,
     alignSelf: 'center',
+    marginBottom: theme.spacing[4],
   },
   card: {
     marginBottom: theme.spacing[4],
