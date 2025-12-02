@@ -18,8 +18,8 @@ export const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Hero Header with Gradient */}
+    <View style={styles.container}>
+      {/* Hero Header with Gradient - Fixed at top */}
       <LinearGradient
         colors={[theme.colors.primary[700], theme.colors.primary[900]]}
         style={styles.header}
@@ -28,7 +28,9 @@ export const HomeScreen = ({ navigation }) => {
         <Text style={styles.userName}>{user?.name}</Text>
       </LinearGradient>
 
-      <View style={styles.content}>
+      {/* Scrollable Content */}
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <View style={styles.content}>
         {/* Quick Actions */}
         <Text style={styles.sectionTitle}>Quick Actions</Text>
         <View style={styles.actionsGrid}>
@@ -46,12 +48,13 @@ export const HomeScreen = ({ navigation }) => {
             style={styles.actionCard}
             onPress={() => navigation.navigate('Usage')}
           >
-            <View style={[styles.actionIcon, { backgroundColor: theme.colors.accent[100] }]}>
+            <View style={[styles.actionIcon, { backgroundColor: theme.colors.accent[200] }]}>
               <Text style={styles.actionEmoji}>📊</Text>
             </View>
             <Text style={styles.actionTitle}>Usage</Text>
           </TouchableOpacity>
-
+        </View>
+        <View style={styles.actionsGrid}>
           <TouchableOpacity
             style={styles.actionCard}
             onPress={() => navigation.navigate('Devices')}
@@ -119,8 +122,9 @@ export const HomeScreen = ({ navigation }) => {
             <Text style={styles.infoValue}>2 Lines</Text>
           </View>
         </Card>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -134,6 +138,9 @@ const styles = StyleSheet.create({
     paddingTop: theme.spacing[12],
     paddingBottom: theme.spacing[8],
   },
+  scrollView: {
+    flex: 1,
+  },
   greeting: {
     ...theme.typography.styles.body,
     color: theme.colors.white,
@@ -146,7 +153,6 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: theme.spacing[4],
-    marginTop: -theme.spacing[4],
   },
   sectionTitle: {
     ...theme.typography.styles.h4,
@@ -155,13 +161,12 @@ const styles = StyleSheet.create({
   },
   actionsGrid: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginHorizontal: -theme.spacing[2],
+    justifyContent: 'space-around',
+    alignItems: 'center',
     marginBottom: theme.spacing[6],
   },
   actionCard: {
-    width: '50%',
-    padding: theme.spacing[2],
+    alignItems: 'center',
   },
   actionIcon: {
     width: 64,
