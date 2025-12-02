@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
 import { theme } from '../theme';
 import { Card } from '../components/Card';
 
@@ -8,7 +8,7 @@ export const SupportScreen = () => {
     <ScrollView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Support & Help</Text>
-
+        <Image source={require('../../assets/icon.png')} style={styles.logo} />
         <Card style={styles.card}>
           <Text style={styles.cardTitle}>How can we help?</Text>
           <TouchableOpacity style={styles.option}>
@@ -44,6 +44,11 @@ const styles = StyleSheet.create({
   title: {
     ...theme.typography.styles.h3,
     marginBottom: theme.spacing[4],
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
   },
   card: {
     marginBottom: theme.spacing[4],

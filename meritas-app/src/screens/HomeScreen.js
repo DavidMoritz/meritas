@@ -5,8 +5,9 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  ImageBackground,
+  Image
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { theme } from '../theme';
 import { Card } from '../components/Card';
 
@@ -19,14 +20,15 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Hero Header with Gradient - Fixed at top */}
-      <LinearGradient
-        colors={[theme.colors.primary[700], theme.colors.primary[900]]}
+      {/* Hero Header with Background Image - Fixed at top */}
+      <ImageBackground
+        source={require('../../assets/header-bg.png')}
         style={styles.header}
+        resizeMode="cover"
       >
         <Text style={styles.greeting}>Welcome back,</Text>
         <Text style={styles.userName}>{user?.name}</Text>
-      </LinearGradient>
+      </ImageBackground>
 
       {/* Scrollable Content */}
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -122,6 +124,7 @@ export const HomeScreen = ({ navigation }) => {
             <Text style={styles.infoValue}>2 Lines</Text>
           </View>
         </Card>
+        <Image source={require('../../assets/icon.png')} style={styles.logo} />
         </View>
       </ScrollView>
     </View>
@@ -135,8 +138,8 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: theme.spacing[6],
-    paddingTop: theme.spacing[12],
-    paddingBottom: theme.spacing[8],
+    paddingTop: theme.spacing[16],
+    paddingBottom: theme.spacing[4],
   },
   scrollView: {
     flex: 1,
@@ -205,6 +208,11 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     color: theme.colors.text.primary,
     marginBottom: theme.spacing[4],
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
   },
   payButton: {
     backgroundColor: theme.colors.primary[700],
