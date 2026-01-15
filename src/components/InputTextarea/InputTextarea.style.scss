@@ -1,0 +1,50 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+
+// SCSS
+.input-textarea {
+  &.auto-grow {
+    textarea {
+      field-sizing: content;
+    }
+  }
+
+  .max-length-footnote {
+    position: absolute;
+    right: 0;
+    margin-top: 5px;
+    font-size: $font-size-xs;
+  }
+
+  // SIZES
+  &.size-md {
+    textarea {
+      border-radius: $border-radius;
+    }
+  }
+
+  &.size-sm {
+    textarea {
+      border-radius: $border-radius-sm;
+    }
+  }
+
+  // THEMES
+  &.theme-gray {
+    textarea {
+      background-color: $gray-200;
+    }
+  }
+
+  &.theme-blue {
+    textarea {
+      border-color: $blue-dark;
+      background-color: $blue-dark;
+      color: $white;
+    }
+  }
+}

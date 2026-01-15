@@ -1,0 +1,26 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+
+// SCSS
+#Toaster {
+  display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  z-index: $zindex-toaster;
+  margin-bottom: 10px;
+  background-color: transparent;
+  padding: 15px;
+  min-width: 400px;
+  min-height: 50px;
+
+  &:empty {
+    display: none;
+  }
+}

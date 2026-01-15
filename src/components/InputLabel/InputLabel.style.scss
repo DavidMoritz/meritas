@@ -1,0 +1,30 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+
+// SCSS
+.input-label {
+  display: flex;
+  gap: 0.2em;
+  margin-bottom: 5px;
+  line-height: $line-height;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+
+  .label-text {
+    @include ellipsis;
+
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .required {
+    color: $cyan;
+  }
+
+  .tooltip {
+  }
+}

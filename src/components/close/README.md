@@ -1,0 +1,7 @@
+# Close
+
+## Usage
+
+```tsx
+    <Close />
+```

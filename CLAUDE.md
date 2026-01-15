@@ -4,357 +4,231 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Meritas Mobile is a monorepo containing:
-1. **Mobile App** (`expo/`) - Cross-platform mobile application built with Expo and React Native
-2. **Website** (`website/`) - Company marketing website for Meritas Digital, LLC
+This is a modern React web application built with TanStack Start (full-stack React framework), featuring file-based routing, SSR/SPA support, and a comprehensive design system with Storybook.
 
-### Mobile App Technology
-- **Expo SDK**: ~54.0.25
-- **React**: 19.1.0
-- **React Native**: 0.81.5
-- **New Architecture**: Enabled (React Native's new renderer and native module system)
-
-### Website Technology
-- **HTML5**: Semantic, accessible markup
-- **CSS3**: Modern styling with Grid, Flexbox, and custom properties
-- **Vanilla JavaScript**: No frameworks, lightweight (~5KB total)
-- **Design**: Modern minimalist, single-page with smooth scrolling
-- **Colors**: Deep blue (#004C97) and red (#C1272D) from company logo
-- **Hosting**: GitHub Pages
-
-## Repository Structure
-
-```
-meritasMobile/
-├── expo/               # Mobile app (iOS, Android, Web via Expo)
-│   ├── App.js          # Main application component
-│   ├── index.js        # Expo entry point
-│   ├── app.json        # Expo configuration
-│   ├── package.json    # Mobile app dependencies
-│   └── assets/         # App icons, splash screens, images
-├── website/            # Marketing/landing website
-│   ├── index.html      # Main HTML file (single-page)
-│   ├── css/
-│   │   └── styles.css  # All styling
-│   ├── js/
-│   │   └── main.js     # Navigation, form handling, animations
-│   ├── public/         # Logo and image assets
-│   ├── package.json    # Deployment scripts
-│   └── README.md       # Website-specific documentation
-├── README.md           # Project documentation
-├── LICENSE             # MIT License
-└── CLAUDE.md           # This file
-```
+**Tech Stack:**
+- **Framework:** TanStack Start (React 19) with SSR and prerendering
+- **Routing:** TanStack Router (file-based routing in `src/routes/`)
+- **Styling:** Tailwind CSS v4 with custom design system
+- **Forms:** React Hook Form with Zod validation
+- **Testing:** Vitest with React Testing Library
+- **Linting/Formatting:** Biome (replaces ESLint/Prettier)
+- **Component Development:** Storybook
+- **Build:** Vite with Nitro for SSR
+- **Data Fetching:** TanStack Query with SSR integration
+- **Animation:** Motion (Framer Motion)
 
 ## Development Commands
 
-### Mobile App (Expo)
-
-All commands should be run from the `expo/` directory:
-
 ```bash
-cd expo
-
 # Development
-npm start              # Start Expo dev server with interactive menu
-npm run ios            # Start and open on iOS simulator
-npm run android        # Start and open on Android emulator
-npm run web            # Start and open in web browser
+npm run dev              # Start dev server on port 3000
 
-# Installing dependencies
-npx expo install <pkg> # For packages with native code (ensures compatibility)
-npm install <pkg>      # For JavaScript-only packages
+# Building
+npm run build            # Production build
+npm run preview          # Preview production build
+
+# Testing
+npm run test             # Run all tests with Vitest
+vitest src/path/to/file.test.ts  # Run single test file
+
+# Code Quality
+npm run lint             # Lint with Biome
+npm run format           # Format with Biome
+npm run check            # Lint + format check
+
+# Component Development
+npm run storybook        # Start Storybook on port 6006
+npm run build-storybook  # Build Storybook
 ```
 
-### Website
+## Architecture
 
-All commands should be run from the `website/` directory:
+### Routing System
 
-```bash
-cd website
+**File-based routing** with TanStack Router:
+- Routes live in `src/routes/` directory
+- `__root.tsx` defines the root layout with Navbar and Footer
+- Route files are auto-generated into `src/routeTree.gen.ts`
+- SSR is enabled with prerendering and link crawling
+- Router setup in `src/router.tsx` integrates TanStack Query
 
-# Local Development
-python3 -m http.server 8000  # Python HTTP server (recommended)
-npx serve .                   # Node.js alternative
+**Current routes:**
+- `/` - Home page (index.tsx)
+- `/about` - About page
+- `/contact` - Contact page with form
+- `/services` - Services page
+- `/work` - Work/portfolio page
 
-# Deployment
-npm install                   # First time only
-npm run deploy                # Deploy to GitHub Pages
+### Component Architecture
+
+**Component organization:**
+- `src/components/` - Reusable UI components (buttons, inputs, alerts, icons, etc.)
+- `src/components/_templates/` - Page-specific template components (heroes, sections)
+- `src/components/_cards/` - Card-style components
+- Each component folder contains: `ComponentName.tsx`, `ComponentName.stories.tsx`, `ComponentName.spec.ts`
+
+**Component naming convention:**
+- Folders: kebab-case (e.g., `input-phone/`)
+- Files: PascalCase for components (e.g., `InputPhone.tsx`)
+- Biome enforces `useFilenamingConvention` with kebab-case and special support for `-` prefixed files
+
+**Key component patterns:**
+- Form inputs follow shared props interface (`SharedInputProps.type.ts`)
+- Inputs support React Hook Form integration with `register` prop
+- Components use Tailwind CSS for styling
+- Motion library for animations
+- Lucide React for icons
+
+### Forms
+
+**Form architecture:**
+- Forms in `src/forms/` directory organized by feature (contact, generic)
+- Each form has: component, schema (Zod), and tests
+- React Hook Form with Zod resolvers for validation
+- Custom input components with shared interface
+- Example: `src/forms/contact/ContactForm.tsx` + `ContactForm.schema.ts`
+
+### Data & Services
+
+**Services:**
+- `src/services/` - API integration and service layer
+- Services organized by feature (contact, generic)
+
+**Data:**
+- `src/data/` - Static data, site metadata, navigation config
+- `headerNavLinks.ts` - Navigation structure
+- `siteMetadata.js` - Global site configuration
+
+**State & Queries:**
+- TanStack Query integrated with router for SSR
+- Query context setup in `src/integrations/tanstack-query/`
+- Shared query types in `src/types/QueryOptions.type.ts`
+
+### Environment Variables
+
+**T3 Env** provides type-safe environment variables:
+- Configuration in `src/env.ts`
+- Server vars: `SERVER_URL`
+- Client vars: prefixed with `VITE_` (e.g., `VITE_APP_TITLE`)
+- Import with: `import { env } from '@/env'`
+
+### Styling
+
+**Tailwind CSS v4:**
+- Custom configuration in CSS files (not config file)
+- Uses `@theme` directive for customization
+- Global styles in `src/styles/globals.css`
+- Component-specific SCSS in `src/styles/` (legacy)
+- Design system enforces consistent spacing, colors, typography
+
+**Biome CSS Linting:**
+- Native CSS linting enabled in Biome 2.3.0
+- Tailwind directives recognized via `tailwindDirectives: true`
+- Utility class sorting enforced with `useSortedClasses`
+
+### Custom Hooks
+
+Located in `src/hooks/`:
+- `useCookie/` - Cookie management hook
+- `useGeoLocation/` - Geolocation functionality with tests
+
+### Testing
+
+**Vitest configuration:**
+- Setup file: `.vitest/vitest.setup.ts`
+- Uses jsdom environment
+- Test files: `**/*.{spec,test}.{ts,tsx}` in `src/`
+- Coverage with v8 provider
+- Testing Library matchers via `@testing-library/jest-dom`
+
+**Test patterns:**
+- Each component has co-located `.spec.ts` file
+- Forms have dedicated test files
+- Utilities have `.test.ts` files
+
+## Code Quality Standards
+
+### Biome Configuration
+
+**Extensive linting rules** (see `biome.json`):
+- Strict TypeScript enforcement
+- Accessibility rules (a11y) - comprehensive ARIA and semantic HTML checks
+- React-specific rules (hooks, JSX patterns)
+- Security rules (no dangerouslySetInnerHTML, target="_blank" safety)
+- Style consistency (arrow functions, template literals, const over let)
+- **Magic numbers disallowed** except in test files
+- File naming: kebab-case with special patterns for TanStack Router
+
+**Key overrides:**
+- `noMagicNumbers` disabled in test files
+- `useFilenamingConvention` disabled for `components/**`
+- `noConsole` disabled (Meritas-specific)
+- `noImgElement` disabled (Meritas-specific, normally Next.js rule)
+
+**Formatting:**
+- Single quotes for JS/TS
+- 2 space indentation
+- 80 character line width
+- Semicolons always
+- ES5 trailing commas
+
+### Path Aliases
+
+**TypeScript paths** configured in `tsconfig.json`:
+- `@/*` maps to `./src/*`
+- Example: `import { Button } from '@/components/button/Button'`
+- Vite resolves via `vite-tsconfig-paths` plugin
+
+## Important Patterns
+
+### Router + Query Integration
+
+The router is tightly integrated with TanStack Query for SSR:
+```typescript
+// src/router.tsx shows the pattern
+- getRouter() creates router with query context
+- setupRouterSsrQueryIntegration() enables SSR data fetching
+- Routes can use loaders that leverage TanStack Query
 ```
 
-Open http://localhost:8000 after starting local server.
+### Component Development Workflow
 
-## Platform-Specific Requirements
+1. Create component folder in `src/components/` (kebab-case)
+2. Add `.tsx` component file (PascalCase)
+3. Add `.stories.tsx` for Storybook
+4. Add `.spec.ts` for tests
+5. Use shared types from `src/types/` when applicable
 
-### Mobile App
-- **iOS Development**: Requires macOS with Xcode installed
-- **Android Development**: Requires Android Studio with configured emulator or physical device
-- **Web Development**: Runs in any modern web browser (no additional setup)
-- **Physical Device Testing**: Install Expo Go app and scan QR code from `npm start`
+### Devtools
 
-### Website
-- **No build process**: Plain HTML/CSS/JS, edit and refresh
-- **Python 3**: For local development server (built-in on macOS/Linux)
-- **Node.js**: Optional, for deployment scripts via gh-pages package
-- **Modern browser**: Any recent Chrome, Firefox, Safari, or Edge
+Development environment includes:
+- TanStack Router Devtools
+- TanStack Query Devtools
+- React Devtools
+- All integrated into `@tanstack/react-devtools` panel in bottom-right
 
-## Architecture Notes
+### React Compiler
 
-### Mobile App Architecture
+Project uses `babel-plugin-react-compiler` for automatic optimization - this affects how you should write React code:
+- Avoid manual memoization (React Compiler handles it)
+- Write idiomatic React without useMemo/useCallback unless necessary
+- Let the compiler optimize re-renders
 
-#### Entry Point Flow
-1. `expo/index.js` registers the root component using `registerRootComponent(App)`
-2. `expo/App.js` contains the main application component
-3. Currently uses a single-file structure (expand into organized directories as features grow)
+## Special Considerations
 
-#### React Native New Architecture
-The mobile app has `newArchEnabled: true` in `app.json`, which enables:
-- **Fabric**: New rendering system (replaces the legacy bridge)
-- **TurboModules**: New native module system for better performance
-- **Important**: When adding native modules, verify they're compatible with the new architecture
+1. **Tailwind v4**: Uses new CSS-first configuration approach with `@theme` directive, not traditional JS config
+2. **TanStack Start**: Full-stack framework, not just TanStack Router - includes SSR, prerendering, and API routes via Nitro
+3. **Biome over ESLint**: Don't suggest ESLint/Prettier changes, this project uses Biome exclusively
+4. **File-based routing**: Routes are files, not configuration - adding routes means adding files to `src/routes/`
+5. **Motion library**: Use `motion` not `framer-motion` (it's the new package name)
+6. **React 19**: Latest React features available, including new hooks and patterns
+7. **Node version**: Project uses Node 24.3.0 (see `.nvmrc`)
 
-#### Expo Configuration
-All Expo-specific configuration lives in `expo/app.json`:
-- App metadata (name, version, slug)
-- Platform-specific settings (iOS, Android, web)
-- Asset paths (icons, splash screens)
-- UI preferences (orientation, interface style)
+## Common Issues
 
-### Recommended Mobile App Structure
-
-As the mobile app grows, organize code into:
-```
-expo/
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── screens/        # Screen-level components
-│   ├── navigation/     # Navigation configuration (React Navigation)
-│   ├── hooks/          # Custom React hooks
-│   ├── utils/          # Helper functions and utilities
-│   ├── constants/      # App-wide constants
-│   ├── services/       # API calls and external service integrations
-│   └── types/          # TypeScript types (if/when adding TypeScript)
-├── App.js
-└── index.js
-```
-
-### Website Architecture
-
-#### Single-Page Design
-The website uses a single HTML file with JavaScript-powered smooth scrolling navigation:
-- All sections on one page: Hero, About, Services, Team, Contact
-- Navigation links trigger smooth scroll to section anchors
-- Mobile-responsive hamburger menu
-- No page reloads, seamless UX
-
-#### File Organization
-```
-website/
-├── index.html          # Structure and content
-├── css/styles.css      # All styling (mobile-first, responsive)
-├── js/main.js          # Behavior (navigation, forms, animations)
-└── public/             # Static assets only
-```
-
-#### Key Features
-- **Smooth scrolling**: CSS `scroll-behavior: smooth` with JS fallback
-- **Intersection Observer**: Fade-in animations for cards on scroll
-- **Responsive navigation**: Desktop menu, mobile hamburger
-- **Contact form**: Configurable (mailto fallback, can use Formspree/Web3Forms)
-- **Social links**: LinkedIn, Twitter/X, Email
-- **Team profiles**: Links to LinkedIn profiles
-
-#### Contact Form Configuration
-The form uses a configurable endpoint in `js/main.js`:
-```javascript
-const CONFIG = {
-    adminEmail: 'davidmoritz@gmail.com',
-    formEndpoint: null  // Set to Formspree/Web3Forms URL for production
-};
-```
-
-Without `formEndpoint`, form uses `mailto:` (opens email client). For production:
-1. Sign up at [Formspree](https://formspree.io) or [Web3Forms](https://web3forms.com)
-2. Get endpoint URL
-3. Update `CONFIG.formEndpoint` in `js/main.js`
-
-## Development Workflow
-
-### Working on Mobile App
-
-1. Navigate to `expo/` directory
-2. Run `npm start` to start the development server
-3. Make changes to code - app will hot reload automatically
-4. Test on multiple platforms (iOS, Android, Web)
-5. Use `npx expo install` for native dependencies
-
-### Adding Dependencies to Mobile App
-
-```bash
-cd expo
-npx expo install <package-name>  # For native-compatible packages (RECOMMENDED)
-npm install <package-name>       # For JavaScript-only packages
-```
-
-**Important**: Use `npx expo install` for packages that might include native code. This ensures version compatibility with your Expo SDK version.
-
-### Testing on Physical Devices
-
-- Install Expo Go app on your iOS or Android device
-- Ensure device is on same network as development machine
-- Run `npm start` in the `expo/` directory
-- Scan QR code with Expo Go (Android) or Camera app (iOS)
-- For custom native code, you'll need to create development builds (Expo Go doesn't support custom native code)
-
-### Working on Website
-
-1. Navigate to `website/` directory
-2. Start local server: `python3 -m http.server 8000`
-3. Open http://localhost:8000 in browser
-4. Edit HTML/CSS/JS files
-5. Refresh browser to see changes (no build step!)
-6. Test responsive design using browser dev tools
-
-#### Making Content Updates
-- **Text changes**: Edit `index.html` directly
-- **Styling**: Modify `css/styles.css` (uses CSS custom properties for colors)
-- **Behavior**: Update `js/main.js`
-- **Images**: Add to `public/` and reference in HTML
-
-#### Color Scheme
-Colors defined as CSS custom properties in `styles.css`:
-```css
---primary-blue: #004C97;
---primary-red: #C1272D;
-```
-Change these to update colors site-wide.
-
-## Code Style and Conventions
-
-### Mobile App
-
-#### Component Structure
-- Use functional components with hooks (not class components)
-- Keep components focused and single-purpose
-- Extract reusable logic into custom hooks
-
-#### Styling
-- Use `StyleSheet.create()` for component styles (better performance than inline styles)
-- Consider implementing a consistent theming system as the app scales
-- Use Expo's built-in support for responsive design
-- **CRITICAL**: `fontWeight` must be a **number** (e.g., `400`, `600`, `700`), NOT a string (e.g., `'400'`, `'600'`, `'700'`)
-  - React Native's new architecture (Fabric) strictly enforces type safety
-  - String fontWeights will cause type errors and invisible text on iOS
-  - Example: Use `fontWeight: 600` not `fontWeight: '600'`
-- **CRITICAL**: Do NOT use `lineHeight` in typography styles when using React Native's new architecture
-  - The `lineHeight` property can cause text rendering issues on iOS with Fabric enabled
-  - Text may become invisible if `lineHeight` is specified in typography style objects
-  - If line height control is needed, use it sparingly and test thoroughly on iOS
-
-#### State Management
-- Start with React's built-in state management (useState, useContext)
-- Consider adding Redux, Zustand, or Jotai as complexity grows
-
-### Website
-
-#### Code Style
-- **Semantic HTML**: Use appropriate tags (`<nav>`, `<section>`, `<article>`)
-- **CSS Organization**: Organized by sections with clear comments
-- **JavaScript**: Vanilla JS, ES6+ features, event-driven
-- **Mobile-first**: Base styles for mobile, media queries for desktop
-- **Accessibility**: ARIA labels, keyboard navigation, semantic markup
-
-#### Performance
-- **No bundler**: Zero build time, instant refresh
-- **Minimal JS**: ~5KB total JavaScript
-- **Google Fonts**: Preconnect for faster loading
-- **Images**: Optimize before adding to `public/`
-
-## Building for Production
-
-### Mobile App
-
-```bash
-cd expo
-
-# Using EAS Build (recommended by Expo)
-npx eas build --platform ios
-npx eas build --platform android
-npx eas build --platform all
-
-# Traditional build (if not using EAS)
-npx expo build:ios
-npx expo build:android
-```
-
-### Website
-
-```bash
-cd website
-
-# Install deployment dependencies (first time only)
-npm install
-
-# Deploy to GitHub Pages
-npm run deploy
-```
-
-This creates/updates the `gh-pages` branch and deploys the site. GitHub automatically serves it.
-
-#### Custom Domain Setup
-
-To use a custom domain (e.g., meritasdigital.com):
-
-1. Create `CNAME` file in `website/`:
-   ```bash
-   echo "meritasdigital.com" > CNAME
-   ```
-
-2. Configure DNS with your domain registrar:
-   - Add A records pointing to GitHub Pages IPs, OR
-   - Add CNAME record pointing to `<username>.github.io`
-
-3. In GitHub repo settings, set custom domain to `meritasdigital.com`
-
-4. Redeploy: `npm run deploy`
-
-## Common Issues and Solutions
-
-### Mobile App
-
-**Issue**: Native module not found after installing
-- **Solution**: Some packages require running `npx expo prebuild` or creating a development build
-
-**Issue**: Simulator/emulator not opening
-- **Solution**: Ensure Xcode Command Line Tools are installed (iOS) or Android Studio is properly configured (Android)
-
-**Issue**: Metro bundler errors
-- **Solution**: Try clearing cache with `npx expo start -c`
-
-**Issue**: Text not visible on iOS (appears as blank/invisible)
-- **Solution**: Check that all `fontWeight` values are **numbers** (e.g., `600`) not strings (e.g., `'600'`)
-- **Solution**: Remove `lineHeight` from typography style objects - it causes rendering issues with React Native's new architecture (Fabric)
-- **Solution**: Search codebase for `fontWeight.*['"]` to find any string fontWeights and convert to numbers
-- **Root Cause**: React Native's new architecture (Fabric) enforces strict type checking on style properties
-
-### Website
-
-**Issue**: Contact form doesn't work
-- **Solution**: Form uses mailto by default (opens email client). For production, configure a form service:
-  1. Sign up at Formspree.io or Web3Forms.com
-  2. Get your endpoint URL
-  3. Update `CONFIG.formEndpoint` in `js/main.js`
-
-**Issue**: Deployment fails with gh-pages
-- **Solution**: Ensure you've initialized git and have push access to the repository
-- **Solution**: Run `npm install` first to install `gh-pages` package
-- **Solution**: Check that `.nojekyll` file exists (prevents Jekyll processing)
-
-**Issue**: Styles not loading after deployment
-- **Solution**: Check that file paths are relative (not absolute) in HTML
-- **Solution**: Clear browser cache and hard refresh (Cmd+Shift+R or Ctrl+Shift+R)
-
-**Issue**: Images not showing
-- **Solution**: Verify images are in `public/` directory
-- **Solution**: Check file paths in HTML are correct (`public/image-name.jpeg`)
-- **Solution**: Ensure image files were committed to git before deploying
+- **Route changes not working?** The `routeTree.gen.ts` auto-generates; restart dev server if needed
+- **Biome errors?** Run `npm run check` to see all issues, `npm run format` to auto-fix formatting
+- **Test failures?** Ensure jsdom environment is set and setup file is configured
+- **Import errors?** Check path alias `@/*` is being used correctly
+- **Tailwind classes not working?** Ensure `@tailwindcss/vite` plugin is active and v4 syntax is used

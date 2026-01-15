@@ -1,0 +1,21 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+
+// SCSS
+.input-radio-group {
+  margin: $spacing-sm 0;
+  padding: 0 $spacing-sm;
+
+  &.inline {
+    display: flex;
+    flex-direction: row;
+
+    .input-radio {
+      margin-right: $spacing-xs;
+    }
+  }
+}

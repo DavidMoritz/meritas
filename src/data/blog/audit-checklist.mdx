@@ -1,0 +1,411 @@
+---
+title: 'Audit Checklist'
+date: '2025-02-05 CST'
+tags: ['meritas']
+draft: false
+summary: 
+authors: ['carl']
+---
+
+> NOTE: This was put together for a client, and we felt the list was worthy of sharing. No updates have been made. The list is posted "as is" below. The idea here is to help a team get a good measure of the health of their software development efforts.
+
+# Audit Checklist
+
+This comprehensive checklist serves as a strategic framework for conducting thorough software project audits. It covers essential aspects of modern software development, from project management and coding practices to security, operations, and innovation. While adaptable to different project sizes and types, it provides a structured approach to evaluating software development practices, infrastructure, and team processes.
+
+**Key areas of focus include:**
+- General Process and Management
+- Coding Practices
+- UX Design and Testing
+- Security
+- Deployment and Operations
+- Compliance and Legal
+- Innovation and Improvement
+- Technical Leadership and Architecture
+- Team Health and Knowledge Management
+- Business-Technology Alignment
+- System Dependencies and Sustainability
+- Monitoring and Incident Management
+
+## General Process and Management
+This section evaluates the foundational elements that enable effective software development and delivery. This section aims to ensure that proper organizational structures, communication channels, and management practices are in place to support successful project execution. By addressing these areas, businesses can improve project predictability, reduce risks, and increase team productivity. Strong process management leads to better resource utilization, clearer communication channels, and more predictable project outcomes, ultimately resulting in faster time-to-market and higher quality deliverables.
+
+### Project Management:
+1. Does the project have documented success criteria with measurable outcomes? If yes, where is it documented?
+2. Which project management methodology (Agile, Scrum, etc.) is being used, and are all required ceremonies being conducted regularly?
+3. What project management tool is being used, and can you demonstrate that all tasks are being consistently tracked and updated?
+4. Is there a documented process for tracking and managing project timelines and milestones? How frequently is it reviewed?
+5. Where are project requirements documented, and what is the process for validating them with stakeholders?
+6. Is there a risk register or similar document that identifies potential risks and their mitigation strategies?
+7. How is technical debt being tracked? Is there a prioritized list of technical debt items with planned remediation dates?
+8. Does the team maintain a skills matrix that maps team member capabilities to project needs?
+9. What is the established communication cadence with stakeholders, and through which channels does this occur?
+10. How many critical bugs are currently in the backlog and what's their average age?
+11. What percentage of development time is spent on bug fixes vs. new features?
+12. What's the current sprint velocity trend over the last 6 months?
+13. Is there a documented system dependency map showing relationships between all applications?
+
+### Team Structure & Communication:
+1. Can each team member clearly articulate their role and responsibilities within the project?
+2. Who are the product owners and how do they communicate with the engineering team?
+3. Which communication tools are actively being used by the team, and are they being used effectively?
+4. What is the schedule for regular team meetings, and what is the attendance rate?
+5. How do different functions (development, design, QA, etc.) collaborate on deliverables?
+6. Is there a RACI matrix that clearly defines decision-making authority for all project areas?
+7. Can you show the documented onboarding process for new team members?
+8. For remote teams: Are core collaboration hours defined and documented? How is time zone coverage managed?
+9. Is there a documented backup plan for each critical role on the project?
+10. What's the current team morale score/survey results?
+11. What's the ratio of senior to junior developers?
+12. Are there areas of code that only one person understands? How are these identified and documented?
+
+### Change Management:
+1. What is the documented process for submitting and approving change requests?
+2. How are changes to the codebase tracked and documented?
+3. Is there a process for assessing the impact of proposed changes before implementation?
+
+### Training and Knowledge Sharing:
+1. Is there a structured training program for new technologies? How often is it updated?
+2. Where is technical documentation stored and how frequently is it updated?
+3. Is pair programming practiced? If yes, how frequently and what is the rotation schedule?
+4. Are architecture decisions documented in ADRs? Where are they stored?
+5. How frequently are internal learning sessions conducted and what is the attendance rate?
+
+## Coding Practices
+This section evaluates the standards, tools, and methodologies used in the software development process. Strong coding practices are fundamental to maintaining software quality, reducing technical debt, and enabling team collaboration. By implementing consistent standards, automated tools, and thorough review processes, organizations can improve code maintainability, reduce defects, and accelerate development velocity. Well-established coding practices lead to higher quality deliverables, easier onboarding of new team members, and more efficient debugging and maintenance processes.
+
+### Code Quality:
+1. Which automated linting and formatting tools are in place? Are they enforced in the CI pipeline?
+2. What are the mandatory code review requirements before code can be merged?
+3. Is there a defined threshold for code complexity? How is it measured?
+4. What process is used to identify and remove dead code?
+5. Are there documented performance benchmarks? How often are they reviewed?
+6. What's the maximum allowed cyclomatic complexity per function?
+7. What percentage of bugs are caught by automated tests vs found in production?
+8. What's the trend in number of production hotfixes over time?
+9. How many known workarounds exist in the codebase and are they documented?
+10. How many deprecated APIs/functions are still in use?
+11. What software design principles are encouraged/enforced:
+	- KISS (Keep It Simple, Stupid)
+	- DRY (Don't Repeat Yourself)
+	- YAGNI (You Ain't Gonna Need It)
+	- SOLID
+	- Principle of Least Astonishment/Surprise
+	- Principle of Modularity
+	- Principle of Abstraction
+	- Principle of Encapsulation
+	- Principle of Least Knowledge
+	- Principle of Low Coupling & High Cohesion
+
+### Version Control:
+1. Which version control system is being used and is it consistently used across all projects?
+2. What branching strategy is being followed? Is it documented and enforced?
+3. What is the process for handling merge conflicts?
+4. How many approvals are required for pull requests? Who can approve them?
+
+### Development Setup:
+1. How many steps are required for a new developer to set up the project locally?
+2. Are all dependencies and prerequisites documented in a single location?
+3. Is there an automated setup script? What percentage of the setup process does it cover?
+4. Are environment-specific configurations documented? Where?
+5. Are there automated tests to validate the setup process?
+6. Is there a troubleshooting guide for common setup issues?
+
+### Testing:
+1. What is the current test coverage percentage? What is the minimum required threshold?
+2. Are integration and end-to-end tests automated in the CI pipeline?
+3. What are the defined performance benchmarks for load testing?
+4. How are API contracts tested and versioned?
+5. Is there a documented strategy for testing in production? What safety measures are in place?
+6. Are chaos engineering practices implemented? Which failure scenarios are tested?
+7. What's the test coverage specifically for critical business logic vs overall coverage?
+8. Are there automated performance regression tests? How often do they run?
+9. What percentage of test failures indicate actual issues vs flaky tests?
+
+### Code Documentation:
+1. What documentation standards (JSDoc, TSDoc, etc.) are required for code comments?
+2. How frequently is API documentation updated? Is it automated?
+3. Does each repository have a comprehensive README.md? What information is required?
+
+## UX Design and Testing
+This section evaluates the organization's approach to user experience design, research, and testing practices. Strong UX practices are fundamental to creating products that meet user needs, drive adoption, and maintain customer satisfaction. By implementing comprehensive UX processes, from user research to usability testing, organizations can reduce development rework, improve feature adoption, and create more compelling products. Effective UX practices lead to increased user satisfaction, reduced support costs, and higher customer retention rates.
+
+### Design Process:
+1. Is there a documented UX design process? How is it integrated with the development lifecycle?
+2. How are user personas and journey maps maintained and updated?
+3. What design system or component library is in use? How is it maintained?
+4. How are design decisions documented and communicated to stakeholders?
+5. What tools are used for prototyping and design collaboration?
+6. How are accessibility requirements incorporated into the design phase?
+
+### User Research:
+1. What user research methods are regularly employed (interviews, surveys, analytics)?
+2. How frequently is user research conducted?
+3. How are research findings documented and shared across teams?
+4. How do research insights influence the product roadmap?
+5. Is there a process for continuous user feedback collection?
+
+### Usability Testing:
+1. hat types of usability testing are conducted (lab studies, remote testing, A/B testing)?
+2. t what stages of development is usability testing performed?
+3. ow are usability testing results documented and acted upon?
+4. hat metrics are used to measure UX success?
+5. ow are critical user paths identified and tested?
+6. hat is the process for testing with users with disabilities?
+
+### UX Metrics:
+1. What key UX metrics are tracked (task completion rates, time-on-task, error rates)?
+2. How is user satisfaction measured and monitored?
+3. What tools are used for UX analytics and monitoring?
+4. How are UX issues prioritized and tracked?
+5. What is the process for measuring the impact of UX changes?
+
+### Design System Management:
+1. How is the design system versioned and maintained?
+2. What is the process for adding new components to the design system?
+3. How is design system adoption measured across products?
+4. How are design system changes communicated to teams?
+5. What tools are used to ensure design system compliance?
+
+## Security
+This section evaluates the organization's security posture, practices, and controls across all aspects of software development and operations. Strong security practices are essential for protecting business assets, maintaining customer trust, and ensuring regulatory compliance. By implementing comprehensive security measures, from secure coding practices to infrastructure protection, organizations can reduce vulnerability risks, prevent data breaches, and maintain system integrity. Effective security management leads to improved risk mitigation, better threat detection and response, enhanced data protection, and sustained business continuity.
+
+### Security Practices:
+1. When was the last security audit conducted? What were the findings?
+2. Which vault solution is used for secrets management? What is the rotation schedule?
+3. Is container scanning implemented in the CI/CD pipeline? Which tool is used?
+4. Is there a documented security incident response plan? When was it last tested?
+5. How are dependency vulnerabilities monitored and addressed?
+
+### Data Protection:
+1. Is there a documented data classification system? How many levels are defined?
+2. What encryption standards are used for data at rest and in transit?
+3. How frequently are access controls audited? Who performs the audit?
+4. Are data retention policies automated? How are they enforced?
+5. Is there documentation for cross-border data transfer compliance?
+
+### Vulnerability Management:
+1. What is the patch management schedule? How quickly are critical vulnerabilities addressed?
+2. Which vulnerability scanning tools are in use? How frequently do they run?
+3. How are security findings tracked and remediated?
+4. Is there a bug bounty program? How are external security reports handled?
+5. What is the process for conducting security penetration testing?
+
+### Continuity Plan:
+1. Where are software licenses documented and stored?
+2. Are recovery codes and credentials securely backed up? Where?
+
+## Deployment and Operations
+
+### CI/CD Pipeline:
+1. What quality gates are implemented in the automated build and deployment process?
+2. How is environment parity verified between staging and production?
+3. What is the feature flag management strategy? How are rollouts controlled?
+4. What deployment metrics are tracked? What is the current deployment success rate?
+5. What's the average time to rollback a failed deployment?
+6. What's the current deployment success rate trend over the last quarter?
+7. Are there automated rollback procedures for all critical systems?
+8. How are configuration changes tracked and audited across environments?
+
+### Monitoring and Logging:
+1. What is the retention period for centralized logs? Where are they stored?
+2. What monitoring tools are in place? What are the alerting thresholds?
+3. How is error tracking implemented? Who receives error notifications?
+4. Are SLO/SLA compliance reports generated? How frequently?
+5. Is there active cost monitoring? How are optimization recommendations handled?
+
+### Infrastructure as Code (IaC):
+1. What percentage of infrastructure is defined as code? Where is it version controlled?
+2. Is there a documented multi-region deployment strategy? Has failover been tested?
+3. Has cloud vendor lock-in been assessed? What is the portability strategy?
+4. Is there a consistent resource tagging policy? How is it enforced?
+
+### Disaster Recovery:
+1. What is the backup strategy and schedule? When was it last tested?
+2. What are the current RTO and RPO metrics? Are they being met?
+
+### Business Impact:
+1. What's the financial impact of known bugs (lost revenue, customer churn)?
+2. How many customer escalations occurred in the last quarter?
+3. What's the trend in customer support tickets related to bugs?
+4. How many features are blocked by technical limitations?
+5. What's the estimated cost of delayed feature delivery?
+
+## Compliance and Legal
+This section focuses on ensuring the organization meets all regulatory requirements, manages licenses appropriately, and maintains proper audit trails. Strong compliance and legal practices protect the business from regulatory risks, legal issues, and potential financial penalties. By maintaining clear documentation of compliance activities, license management, and system audits, organizations can demonstrate due diligence, protect intellectual property rights, and maintain trust with stakeholders. This proactive approach to compliance reduces the risk of legal issues and supports sustainable business growth.
+
+### Regulatory Compliance:
+1. Which industry-specific regulations apply to this project? How is compliance verified?
+2. When was the last compliance check performed? What were the findings?
+
+### Licensing:
+1. Is there a complete inventory of third-party software licenses? Where is it maintained?
+2. How is open-source license compliance verified? What tool is used?
+
+### Audit Trails:
+1. What system activities are being logged for audit purposes?
+2. How long are audit logs retained? Where are they stored?
+
+## Innovation and Improvement
+The Innovation and Improvement section examines how the organization evolves and adapts to changing technology landscapes and business needs. This area is crucial for maintaining competitive advantage and preventing technical stagnation. By fostering a culture of continuous improvement and innovation, organizations can stay ahead of market trends, improve system performance, enhance developer productivity, and deliver better user experiences. Strong innovation practices lead to reduced technical debt, improved system scalability, and increased business agility.
+
+### Feedback Loops:
+1. What processes are in place for collecting user feedback? How is it tracked?
+2. How is stakeholder feedback incorporated into the development cycle?
+
+### Technology Upgrades:
+1. Is there a documented strategy for evaluating and upgrading technologies?
+2. How are technical spikes documented and evaluated?
+3. Is there a technology radar? How often is it updated?
+4. What is the plan for modernizing legacy systems?
+5. When was the last successful major system upgrade completed?
+6. What specific technical limitations are preventing the adoption of newer technologies?
+7. How many proof-of-concept projects were completed in the last year?
+8. What's the success rate of technology modernization initiatives?
+
+### Performance and Scalability:
+1. What are the defined performance testing success criteria?
+2. What are the current load thresholds for auto-scaling?
+3. How is capacity planning conducted? What growth metrics are used?
+4. How is database query performance monitored?
+5. What is the caching strategy? How are cache invalidations handled?
+
+### Developer Experience:
+1. How long does it take a new developer to set up their local environment?
+2. What development tools are standardized across the team?
+3. Is there a shared IDE configuration? How is it maintained?
+4. What internal developer platforms or tools are available?
+5. How are developers kept informed about new technologies?
+
+### Documentation:
+1. How is API documentation kept in sync with code changes?
+2. When was the system architecture diagram last updated?
+3. Are data flow diagrams maintained showing security boundaries?
+4. Where are operational runbooks stored? How often are they updated?
+5. How are incident post-mortems documented and tracked?
+
+### Accessibility and Internationalization:
+1. Has WCAG compliance been verified? What level is achieved?
+2. How frequently is screen reader compatibility tested?
+3. How are translations managed and updated?
+4. Has RTL language support been implemented and tested?
+5. Is accessibility testing part of the regular QA process?
+
+### Continuous Improvement:
+1. How frequently are retrospectives conducted?
+2. What percentage of the budget is allocated to R&D initiatives?
+3. How are improvement initiatives prioritized and tracked?
+
+### AI and Automation Adoption:
+1. What AI-powered development tools are currently in use (e.g. code completion, code review, testing)?
+2. How is the effectiveness of AI tools measured and evaluated?
+3. What processes or tasks have been identified as candidates for AI automation?
+4. Is there a strategy for responsible AI adoption in the development process?
+5. How are developers trained on using AI tools effectively?
+6. What guardrails are in place for AI tool usage (e.g. code review policies, security checks)?
+7. What cost-benefit analysis has been done for AI tool adoption?
+
+## Technical Leadership and Architecture
+This section evaluates the effectiveness of technical decision-making processes and architectural governance within the organization. Strong technical leadership is crucial for maintaining architectural integrity, making sound technical decisions, and guiding the evolution of complex systems. By establishing clear technical leadership structures and architectural principles, organizations can reduce technical debt, improve system reliability, make better technical decisions, and enable faster feature delivery. Effective technical leadership leads to more maintainable systems, reduced development costs, and improved ability to respond to business needs.
+
+### Leadership Structure:
+1. Is there a dedicated technical leadership team or architect role?
+2. What is the decision-making process for technical choices?
+3. How are architectural decisions documented and communicated?
+4. Is there a clear technical vision and roadmap?
+5. How are technical conflicts resolved?
+
+### Architecture Review:
+1. When was the last architecture review conducted?
+2. Are there documented architectural principles and patterns?
+3. How is technical debt tracked and prioritized?
+4. Are there architectural bottlenecks causing system issues?
+5. How are system-wide changes evaluated and implemented?
+
+## Team Health and Knowledge Management
+This section assesses the sustainability of the development team and how effectively knowledge is preserved and shared within the organization. Healthy teams and strong knowledge management practices are essential for long-term success and continuity. By focusing on team retention, knowledge transfer, and documentation, organizations can maintain productivity during team changes, reduce the impact of employee turnover, and preserve critical system knowledge. This leads to faster onboarding, improved team collaboration, and more resilient development operations.
+
+## Team Retention and Stability:
+1. What is the current team turnover rate?
+2. How many original developers who built core systems are still present?
+3. What's the average tenure of developers?
+4. How is critical system knowledge preserved when team members leave?
+5. What measures are in place to retain key technical staff?
+
+### Knowledge Transfer:
+1. How is system knowledge documented and shared?
+2. Is there a mentorship program for new team members?
+3. How are critical business rules documented?
+4. What processes exist for updating technical documentation?
+5. How accessible is historical project information?
+
+## Business-Technology Alignment
+This section examines how effectively technical initiatives and resources align with business objectives and stakeholder needs. Strong alignment between business and technology is critical for ensuring that technical investments deliver maximum business value and meet stakeholder expectations. By maintaining clear communication channels between business and technical teams, establishing shared priorities, and measuring technical impact on business outcomes, organizations can optimize resource allocation, improve ROI on technical investments, and better meet business objectives. This alignment results in more effective use of resources, better business outcomes, and increased stakeholder satisfaction.
+
+### Strategic Alignment:
+1. Is there clear alignment between business priorities and technical roadmap?
+2. How are feature requests prioritized against technical debt?
+3. What metrics track the business impact of technical issues?
+4. How is the ROI of technical investments measured?
+5. Is there a process for balancing short-term fixes with long-term solutions?
+
+### Resource Management:
+1. Is the development team adequately staffed for the workload?
+2. How is the budget split between maintenance and new development?
+3. Are there enough QA resources to properly test changes?
+4. What's the ratio of developers to support staff?
+5. How are resource constraints affecting project delivery?
+
+### Production Impact Analysis:
+1. What's the customer satisfaction trend over time?
+2. Are there metrics on feature usage and user engagement?
+3. How many customers have been lost due to software issues?
+4. What's the impact of bugs on customer support load?
+5. How are production issues affecting business operations?
+
+## System Dependencies and Sustainability
+This section evaluates the long-term viability of the system's technical foundation and its ability to evolve with business needs. Understanding and managing system dependencies is crucial for maintaining system stability, preventing technical obsolescence, and enabling future growth. By actively monitoring technology stack health, managing dependencies, and optimizing development efficiency, organizations can reduce operational risks, improve system reliability, and maintain development velocity. This proactive approach leads to more predictable operations, reduced maintenance costs, improved system longevity, and enhanced ability to adopt new technologies that drive business value.
+
+### Technology Stack:
+1. Are there critical vendor dependencies affecting stability?
+2. How old are the core technologies used in the applications?
+3. Are there end-of-life or unsupported technologies in use?
+4. What's the plan for updating/replacing outdated technologies?
+5. Are there single points of failure in the system?
+
+### Development Efficiency:
+1. What's the average time from feature request to deployment?
+2. Are there bottlenecks in the development process?
+3. How long does the code review process typically take?
+4. What's preventing faster delivery of new features?
+5. How are deployment failures handled and prevented?
+
+### System Dependencies:
+1. How many critical systems are running on outdated/unsupported versions?
+2. What's the estimated cost and timeline to upgrade all outdated dependencies?
+3. How many custom frameworks/libraries are maintained in-house?
+4. What's the age distribution of critical system components?
+
+## Monitoring and Incident Management
+This section assesses how effectively the organization monitors system health and responds to operational issues. Strong monitoring and incident management practices are essential for maintaining system reliability and user satisfaction. By implementing comprehensive monitoring, establishing clear incident response procedures, and maintaining quality metrics, organizations can reduce system downtime, improve mean time to recovery, and maintain high service quality. This results in better user experience, reduced operational costs, and improved team efficiency in handling production issues.
+
+### Production Monitoring:
+1. What's the mean time to detect and resolve production issues?
+2. Are there proper monitoring systems for all critical components?
+3. How are incidents documented and learned from?
+4. Is there a clear escalation path for critical issues?
+5. What percentage of issues are proactively detected vs. reported by users?
+6. What's the MTTR breakdown for critical vs. non-critical issues?
+7. What's the average time to identify the root cause of production issues?
+8. How many false positive alerts occur per week?
+9. Are there automated system health checks for all critical components?
+10. What percentage of issues are discovered by monitoring vs. reported by users?
+
+### Quality Metrics:
+1. What's the cyclomatic complexity of critical code paths?
+2. Are there automated quality gates in the deployment pipeline?
+3. How often do deployments fail or need to be rolled back?
+4. What's the test coverage of critical business logic?
+5. Are there parts of the code that developers are afraid to modify?
+
+

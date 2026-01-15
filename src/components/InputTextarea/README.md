@@ -1,0 +1,7 @@
+# InputTextarea
+
+## Usage
+
+```tsx
+    <InputTextarea />
+```

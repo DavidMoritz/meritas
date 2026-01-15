@@ -1,0 +1,18 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+
+// SCSS
+.input-wrapper {
+  margin: $spacing-xs 0;
+  width: 100%;
+
+  &.inline {
+    //display: inline-block;
+    //flex: 1 1 0;
+    //min-width: 300px;
+  }
+}

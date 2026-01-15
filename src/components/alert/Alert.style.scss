@@ -1,0 +1,51 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+$alert-padding: $spacing-sm;
+
+// SCSS
+.alert {
+  display: block;
+  position: relative;
+  margin: $spacing-xs auto;
+  border-radius: $border-radius;
+  padding: $alert-padding;
+  max-width: 100%;
+
+  &.dismissible {
+    padding-right: 45px;
+  }
+
+  // CLOSE BUTTON
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  // THEMES
+  &.theme {
+    &-default {
+      background-color: $gray-200;
+    }
+
+    &-info {
+      @include theme-info;
+    }
+
+    &-danger {
+      @include theme-danger;
+    }
+
+    &-warning {
+      @include theme-warning;
+    }
+
+    &-success {
+      @include theme-success;
+    }
+  }
+}

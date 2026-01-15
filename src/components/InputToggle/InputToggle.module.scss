@@ -1,0 +1,134 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+$toggle-height: 30px;
+$toggle-width: 60px;
+$switch-size: ($toggle-height - 4);
+$transition-fast: 0.15s;
+$toggle-color-true: $primary;
+$toggle-color-false: $gray-600;
+
+// SCSS
+.input-toggle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: $spacing-xs 0;
+  height: $input-height;
+
+  [type="checkbox"] {
+    display: none;
+
+    & + label {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+      cursor: pointer;
+      height: $toggle-height;
+      min-height: $toggle-height;
+      overflow: hidden;
+
+      .toggle-label {
+        display: inline-block;
+        margin-left: 10px;
+        height: $toggle-height;
+        line-height: $toggle-height;
+
+        &:empty {
+          display: none;
+        }
+      }
+
+      .toggle {
+        display: inline-block;
+        position: relative;
+        border: 2px solid $toggle-color-false;
+        border-radius: ($toggle-height / 2);
+        min-width: $toggle-width;
+        height: $toggle-height;
+        overflow: hidden;
+
+        .toggle-inner {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: $toggle-color-false;
+          padding: 0 ($toggle-height * 0.25) 0 $toggle-height;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          line-height: 1;
+          color: $white;
+          font-size: 1.2rem;
+
+          &::after {
+            display: block;
+            flex: 1 0 auto;
+            height: $toggle-height;
+            text-align: right;
+            line-height: $toggle-height;
+            content: attr(data-label-false);
+          }
+        }
+
+        .toggle-switch {
+          position: absolute;
+          top: 0;
+          right: unset;
+          bottom: 0;
+          left: 0;
+          transition:
+            left 1s ease-in-out,
+            right 1s ease-in-out;
+          margin: 0;
+          border-radius: 50%;
+          box-shadow: $box-shadow-sm;
+          background: $white;
+          width: $switch-size;
+          height: $switch-size;
+        }
+      }
+    }
+  }
+
+  [type="checkbox"]:checked {
+    & + label {
+      .toggle {
+        border: 2px solid $toggle-color-true;
+
+        .toggle-inner {
+          background-color: $toggle-color-true;
+          padding: 0 $toggle-height 0 ($toggle-height * 0.25);
+
+          &::after {
+            text-align: left;
+            content: attr(data-label-true);
+          }
+        }
+
+        .toggle-switch {
+          right: 0;
+          left: unset;
+          transition:
+            left 1s ease-in-out,
+            right 1s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .required {
+    color: $danger;
+  }
+
+  // SIZES
+  &.size {
+    &.-sm {
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# InputToggle
+
+## Usage
+
+```tsx
+    <InputToggle />
+```

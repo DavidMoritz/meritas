@@ -1,0 +1,7 @@
+# InputFootnote
+
+## Usage
+
+```tsx
+    <InputFootnote />
+```

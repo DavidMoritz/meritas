@@ -1,0 +1,122 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+$radio-size: 20px;
+$radio-border-width: 2px;
+$radio-color: $border-color;
+$radio-background: $white;
+$radio-color-selected: $cyan;
+$radio-color-hover: $cyan;
+$disabled-color: $gray-300;
+
+// SCSS
+.input-radio {
+  display: flex;
+  align-items: center;
+  margin: ($spacing-xs / 2) 0;
+
+  input[type="radio"] {
+    @include visually-hidden;
+
+    + label {
+      display: inline-flex;
+      position: relative;
+      align-items: center;
+      cursor: pointer;
+      padding: 0 5px 0 0;
+      min-height: ($radio-size + 4px);
+      line-height: $radio-size;
+      user-select: none;
+
+      &::before {
+        // the radio
+        display: block;
+        transition: background 200ms ease-out;
+        margin-right: 10px;
+        border: $radio-border-width solid $radio-color;
+        border-radius: 50%;
+        background: $radio-background;
+        width: $radio-size;
+        min-width: $radio-size;
+        height: $radio-size;
+        content: "";
+      }
+
+      &:hover {
+        color: $radio-color-hover;
+
+        &::before {
+          border-color: $radio-color-hover;
+        }
+      }
+    }
+
+    &:checked {
+      + label {
+        &::before {
+          border: $radio-border-width solid $radio-color-selected;
+          box-shadow: inset 0 0 0 ($radio-size * 0.16) $white;
+          background: $radio-color-selected;
+        }
+      }
+    }
+
+    &:focus:not(:disabled) {
+      + label {
+        color: $blue-light;
+
+        &::before {
+          box-shadow:
+            inset 0 0 0 ($radio-size * 0.16) $white,
+            $focus-box-shadow;
+        }
+      }
+    }
+
+    &:disabled {
+      + label {
+        cursor: not-allowed;
+        color: $disabled-color;
+
+        &::before {
+          border-color: $disabled-color;
+          background: $gray-100;
+        }
+
+        &:hover {
+          color: $disabled-color;
+        }
+      }
+    }
+
+    &:disabled:checked {
+      + label {
+        &::before {
+          border-color: $disabled-color;
+          background: $disabled-color;
+        }
+      }
+    }
+
+    &.is-invalid {
+      + label {
+        color: $danger;
+
+        &::before {
+          border-color: $danger;
+        }
+      }
+
+      &:checked {
+        + label {
+          &::before {
+            background: $danger;
+          }
+        }
+      }
+    }
+  }
+}

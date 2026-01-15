@@ -1,0 +1,75 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+$toast-padding: 15px;
+
+// SCSS
+.toast {
+  display: flex;
+  flex-direction: row;
+  margin-top: $spacing-xs;
+  border: 1px solid $gray-300;
+  border-radius: $border-radius;
+  background: white;
+  width: 400px;
+  max-width: 400px;
+  min-height: 80px;
+  overflow: hidden;
+  animation: toast-slide-up 0.3s;
+  will-change: transform;
+
+  @keyframes toast-slide-up {
+    from {
+      transform: translateY(100%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  &.warning {
+    border-color: $warning;
+  }
+
+  &.success {
+    border-color: $success;
+  }
+
+  &.error {
+    border-color: $danger;
+  }
+
+  &.info {
+    border-color: $teal;
+  }
+
+  .toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $toast-padding;
+    width: 80px;
+    min-width: 80px;
+  }
+
+  .toast-body {
+    flex: 1 1 auto;
+    padding: $toast-padding 0;
+
+    .toast-heading {
+      margin: 0;
+      text-transform: capitalize;
+    }
+  }
+
+  .toast-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $toast-padding;
+  }
+}

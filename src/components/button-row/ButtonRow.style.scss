@@ -1,0 +1,47 @@
+// IMPORTS
+@import "../../styles/variables/variables";
+@import "../../styles/functions/functions";
+@import "../../styles/mixins/mixins";
+
+// VARIABLES
+$button-gutter-size: 10px;
+$button-gap-size: $spacing-xs;
+
+// SCSS
+.button-row {
+  display: flex;
+  flex-flow: row wrap;
+  gap: $button-gap-size;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  container-name: button-row;
+  container-type: inline-size;
+
+  // ALIGN BUTTONS
+  &.align-left {
+    justify-content: flex-start;
+  }
+
+  &.align-center {
+    justify-content: center;
+  }
+
+  &.align-right {
+    justify-content: flex-end;
+  }
+
+  // BUTTON WRAP
+  &.no-wrap {
+    //flex-wrap: nowrap;
+  }
+}
+
+// BUTTONS in ROW ARE FULL WIDTH ON MOBILE
+@container button-row (width < 300px) {
+  .btn {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+  }
+}
