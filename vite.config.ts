@@ -9,7 +9,6 @@ import { configDefaults } from 'vitest/config';
 
 const config = defineConfig(({ mode }) => {
   const prod = mode === 'prod';
-  const isVercel = process.env.VERCEL === '1' || process.env.CI === 'true';
 
   return {
     plugins: [
@@ -22,12 +21,7 @@ const config = defineConfig(({ mode }) => {
       tailwindcss(),
       tanstackStart({
         spa: {
-          enabled: true,
-          prerender: {
-            enabled: !isVercel,
-            crawlLinks: !isVercel,
-            autoSubfolderIndex: !isVercel,
-          },
+          enabled: false,
         },
       }),
       viteReact({
