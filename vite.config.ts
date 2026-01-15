@@ -9,6 +9,7 @@ import { configDefaults } from 'vitest/config';
 
 const config = defineConfig(({ mode }) => {
   const prod = mode === 'prod';
+  const isVercel = process.env.VERCEL === '1' || process.env.CI === 'true';
 
   return {
     plugins: [
@@ -23,9 +24,9 @@ const config = defineConfig(({ mode }) => {
         spa: {
           enabled: true,
           prerender: {
-            enabled: true,
-            crawlLinks: true,
-            autoSubfolderIndex: true,
+            enabled: !isVercel,
+            crawlLinks: !isVercel,
+            autoSubfolderIndex: !isVercel,
           },
         },
       }),
